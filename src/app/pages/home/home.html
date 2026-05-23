@@ -1,0 +1,93 @@
+<!--Inicio-->
+<div class="estilo-form">
+  <h2>Ingresa Arma</h2>
+  <form [formGroup]="armaForm" (ngSubmit)="guardar()">
+
+    <div class="form-group">
+      <label>Nombre</label>
+      <input type="text" formControlName="nombre" class="form-control" [ngClass]="{
+    'is-invalid': armaForm.get('nombre')?.touched && armaForm.get('nombre')?.invalid
+  }">
+
+      <div *ngIf="armaForm.get('nombre')?.touched && armaForm.get('nombre')?.invalid" class="text-danger">
+        El nombre es obligatorio
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>
+        StatTrak
+        <input type="checkbox" formControlName="statTrak">
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label>URL de Imagen <strong> (https://cs.money/es/csgo/trade/)</strong> o
+        <strong>(https://csgoskins.gg/)</strong></label>
+      <input type="text" formControlName="imagenUrl" class="form-control"
+        [ngClass]="{'is-invalid': armaForm.get('imagenUrl')?.errors?.['required']}">
+
+      <div *ngIf="armaForm.get('imagenUrl')?.touched">
+        <small *ngIf="armaForm.get('imagenUrl')?.errors?.['required']" class="text-danger">
+          La URL es obligatoria
+        </small>
+
+        <small *ngIf="armaForm.get('imagenUrl')?.errors?.['pattern']" class="text-danger">
+          Debe ser una URL válida (http/https)
+        </small>
+      </div>
+
+      <div *ngIf="armaForm.get('imagenUrl')?.value">
+        <img [src]="armaForm.get('imagenUrl')?.value" (error)="onImageError($event)" alt="preview"
+          style="max-width: 200px; margin-top: 10px; border-radius: 8px;">
+      </div>
+
+    </div>
+
+    <div class="form-group position-relative">
+      <label>Buscar Skin</label>
+
+      <input type="text" class="form-control" [value]="busquedaActual" (input)="filtrarSkins($event)"
+        placeholder="Escribe una skin..." autocomplete="off">
+
+      <div class="lista-skins" *ngIf="busquedaActual.length > 0 && skinsFiltradas.length > 0">
+
+        <div *ngFor="let item of skinsFiltradas" class="skin-item" (click)="seleccionarSkin(item)">
+          {{item.nombre}}
+        </div>
+
+      </div>
+
+      <div *ngIf="armaForm.get('skin')?.touched && armaForm.get('skin')?.invalid" class="text-danger">
+        Debes seleccionar una skin
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <label>Categoria</label>
+
+      <div class="d-flex gap-2 flex-wrap">
+        <div *ngFor="let cat of categorias" class="form-color" (click)="seleccionarCategoria(cat)" [ngStyle]="{
+            'background-color': getColor(cat.nombre),
+            'border': armaForm.get('categoria')?.value == cat.id ? '3px solid black' : '1px solid #ccc'
+            }" style="
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            " title="{{cat.nombre}}">
+        </div>
+      </div>
+
+      <div *ngIf="armaForm.get('categoria')?.touched && armaForm.get('categoria')?.invalid" class="text-danger">
+        Debes seleccionar una categoría
+      </div>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-warning form-group" [disabled]="armaForm.invalid">Guardar</button>
+
+  </form>
+</div>

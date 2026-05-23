@@ -1,0 +1,49 @@
+<div class="contenedor-ver-armas">
+  <div class="row">
+
+    <div class="col-md-3 mb-3" *ngFor="let arma of armas">
+
+      <div class="card h-100">
+
+        <img [src]="arma.imagenUrl" class="card-img-top" style="height: 150px; object-fit: cover;">
+
+        <div class="card-body">
+
+          <h5>{{arma.nombre}}</h5>
+
+          <div class="d-flex align-items-center gap-3 mt-2">
+
+            <div class="d-flex align-items-center">
+
+              <span class="me-2">
+                Categoría:
+              </span>
+
+              <span [ngStyle]="{
+        'background-color': getColor(arma.categoria.nombre)
+      }" style="
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+      ">
+              </span>
+
+            </div>
+
+            <span class="badge stattrak" *ngIf="arma.statTrak">
+
+              StatTrak™
+
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

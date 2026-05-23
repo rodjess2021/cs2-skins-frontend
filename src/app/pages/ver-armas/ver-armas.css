@@ -1,0 +1,41 @@
+:host {
+
+    display: block;
+
+    min-height: 100vh;
+
+    background-color: #3a3a3a;
+
+    padding: 20px;
+
+}
+
+.card {
+
+    transition: all 0.3s ease;
+
+    background-color: #1e1e1e;
+
+    color: white;
+
+    border: 1px solid #434343;
+
+}
+
+.card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+
+}
+
+.stattrak {
+    background-color: #1e1e1e;
+
+    color: #ff7b00;
+
+    border: 1px solid #ff7b00;
+
+    font-weight: bold;
+}
