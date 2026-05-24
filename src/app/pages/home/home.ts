@@ -34,6 +34,9 @@ export class Home implements OnInit{
     ) { }
 
   ngOnInit(): void {
+
+    console.log("Home init");
+
     this.armaForm = this.fb.group({
       nombre: ['', Validators.required],
       statTrak: [false],
@@ -51,6 +54,8 @@ export class Home implements OnInit{
 
 
     this.categoria.getAllCategorias().subscribe(resp => {
+
+      console.log("categorias: ", resp);
       
       this.categorias = resp;
       this.cdr.detectChanges();
