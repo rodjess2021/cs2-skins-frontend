@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class Categoria {
 
-  private API_SERVER = "http://localhost:8080/categoria/";
+  private API_SERVER = "https://cs2-skins-backend.onrender.com/categoria/";
 
   constructor(
     private httpClient: HttpClient

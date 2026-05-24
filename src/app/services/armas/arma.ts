@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class Arma {
-  private API_SERVER = "http://localhost:8080/arma/";
+  private API_SERVER = "https://cs2-skins-backend.onrender.com/arma/";
 
   constructor(
     private httpClient: HttpClient

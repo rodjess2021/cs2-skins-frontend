@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class Skin {
 
-  private API_SERVER = "http://localhost:8080/skin/";
+  private API_SERVER = "https://cs2-skins-backend.onrender.com/skin/";
 
   constructor(
     private httpClient: HttpClient
