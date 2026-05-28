@@ -12,6 +12,9 @@ import { Arma } from '../../services/armas/arma';
 export class VerArmas implements OnInit{
   armas: any[] = [];
 
+  //pantalla de carga
+  loading = true;
+
   constructor(
     private arma: Arma,
     private cdr: ChangeDetectorRef
@@ -36,6 +39,7 @@ ngOnInit(): void {
     next: (resp: any) => {
 
       this.armas = resp;
+      this.loading = false; //desaparece el loader y se muestran las armas guardas
       this.cdr.detectChanges();
 
     },

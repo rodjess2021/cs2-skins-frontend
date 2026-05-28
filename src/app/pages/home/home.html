@@ -1,30 +1,67 @@
+<!-- loading -->
+<div *ngIf="loading" class="loading-screen">
+
+  <img src="cs2.png" class="loading-logo">
+
+  <div class="spinner"></div>
+
+  <p>Conectando al servidor...</p>
+
+</div>
+
+
 <!--Inicio-->
-<div class="estilo-form">
+<div class="estilo-form" *ngIf="!loading">
   <h2>Ingresa Arma</h2>
   <form [formGroup]="armaForm" (ngSubmit)="guardar()">
 
-    <div class="form-group">
-      <label>Nombre</label>
-      <input type="text" formControlName="nombre" class="form-control" [ngClass]="{
-    'is-invalid': armaForm.get('nombre')?.touched && armaForm.get('nombre')?.invalid
-  }">
+    <!-- div de input de buscar skin -->
+    <div class="form-group position-relative">
+      <label>Buscar Skin</label>
 
-      <div *ngIf="armaForm.get('nombre')?.touched && armaForm.get('nombre')?.invalid" class="text-danger">
-        El nombre es obligatorio
+      <input type="text" class="form-control" [value]="busquedaActual" (input)="filtrarSkins($event)"
+        placeholder="Escribe una skin..." autocomplete="off">
+
+      <div class="lista-skins" *ngIf="busquedaActual.length > 0 && skinsFiltradas.length > 0">
+        <div *ngFor="let item of skinsFiltradas" class="skin-item" (click)="seleccionarSkin(item)">
+          {{item.nombre}}
+        </div>
       </div>
+
+      <div *ngIf="armaForm.get('skin')?.touched && armaForm.get('skin')?.invalid" class="text-danger">
+        Debes seleccionar una skin
+      </div>
+
     </div>
 
-    <div class="form-group">
-      <label>
-        StatTrak
-        <input type="checkbox" formControlName="statTrak">
-      </label>
-    </div>
 
+    <!-- div de input de url de imagen -->
     <div class="form-group">
-      <label>URL de Imagen <strong> (https://cs.money/es/csgo/trade/)</strong> o
-        <strong>(https://csgoskins.gg/)</strong></label>
-      <input type="text" formControlName="imagenUrl" class="form-control"
+      <div class="label-container">
+          <label>URL de Imagen </label>
+          
+          <!-- bubble text de informacion para pegar url de imagen de -->
+          <button type="button"
+            class="info-btn"
+            (click)="toggleInfo($event)">
+              i
+          </button>
+
+          <div class="info-popup" *ngIf="mostrarInfo" (click)="$event.stopPropagation()">
+            <p><strong>¿Cómo obtener la URL?</strong></p>
+            <p>
+              1. Googlea la skin en cs.money o csgoskins.gg
+            </p>
+            <p>
+              2. Haz click derecho sobre la imagen
+            </p>
+            <p>
+              3. Copia la dirección de imagen
+            </p>
+          </div>
+        </div>
+
+      <input placeholder="Pega aqui la url..." type="text" formControlName="imagenUrl" class="form-control"
         [ngClass]="{'is-invalid': armaForm.get('imagenUrl')?.errors?.['required']}">
 
       <div *ngIf="armaForm.get('imagenUrl')?.touched">
@@ -44,26 +81,29 @@
 
     </div>
 
-    <div class="form-group position-relative">
-      <label>Buscar Skin</label>
 
-      <input type="text" class="form-control" [value]="busquedaActual" (input)="filtrarSkins($event)"
-        placeholder="Escribe una skin..." autocomplete="off">
-
-      <div class="lista-skins" *ngIf="busquedaActual.length > 0 && skinsFiltradas.length > 0">
-
-        <div *ngFor="let item of skinsFiltradas" class="skin-item" (click)="seleccionarSkin(item)">
-          {{item.nombre}}
-        </div>
-
-      </div>
-
-      <div *ngIf="armaForm.get('skin')?.touched && armaForm.get('skin')?.invalid" class="text-danger">
-        Debes seleccionar una skin
-      </div>
-
+    <!-- div de checkbox stattrak -->
+    <div class="form-group">
+      <label>
+        StatTrak
+        <input type="checkbox" formControlName="statTrak">
+      </label>
     </div>
 
+
+     <!-- div de input nombre -->
+    <div class="form-group">
+      <label>Nombre</label>
+      <input placeholder="Ponle el nombre que gustes..." type="text" formControlName="nombre" class="form-control" [ngClass]="{
+      'is-invalid': armaForm.get('nombre')?.touched && armaForm.get('nombre')?.invalid
+      }">
+
+      <div *ngIf="armaForm.get('nombre')?.touched && armaForm.get('nombre')?.invalid" class="text-danger">
+        El nombre es obligatorio
+      </div>
+    </div>
+
+    <!-- div de categoria (colores) -->
     <div class="form-group">
       <label>Categoria</label>
 
@@ -84,8 +124,6 @@
         Debes seleccionar una categoría
       </div>
     </div>
-
-
 
     <button type="submit" class="btn btn-warning form-group" [disabled]="armaForm.invalid">Guardar</button>
 

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, HostListener } from '@angular/core';
 import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Categoria } from '../../services/categorias/categoria';
@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home implements OnInit{
+export class Home implements OnInit {
 
   //variables para entidades del backend
   armaForm!: FormGroup;
@@ -25,13 +25,25 @@ export class Home implements OnInit{
   skinsFiltradas: any[] = [];
   busquedaActual: string = '';
 
+
+  //variable para bubbletext de informacion
+  mostrarInfo: boolean = false;
+
+
+  //pantalla de carga
+  loading = true;
+
+  //variables para carga de skins y categorias
+  categoriasCargadas = false;
+  skinsCargadas = false;
+
   constructor(
-      public fb: FormBuilder,
-      private cdr: ChangeDetectorRef,
-      public categoria: Categoria,
-      public skin: Skin,
-      public arma: Arma
-    ) { }
+    public fb: FormBuilder,
+    private cdr: ChangeDetectorRef,
+    public categoria: Categoria,
+    public skin: Skin,
+    public arma: Arma
+  ) { }
 
   ngOnInit(): void {
 
@@ -49,6 +61,10 @@ export class Home implements OnInit{
     this.skin.getAllSkins().subscribe(resp => {
       this.skins = resp;
       this.skinsFiltradas = resp;
+
+      this.skinsCargadas = true;
+
+      this.validarCarga();
     },
       error => { console.error(error) })
 
@@ -56,8 +72,11 @@ export class Home implements OnInit{
     this.categoria.getAllCategorias().subscribe(resp => {
 
       console.log("categorias: ", resp);
-      
+
       this.categorias = resp;
+      this.categoriasCargadas = true;
+      this.validarCarga();
+      this.loading = false; //desaparece el loader y se muestra formulario
       this.cdr.detectChanges();
     },
       error => { console.error(error) })
@@ -106,6 +125,33 @@ export class Home implements OnInit{
       case 'rojo': return '#D10000';
       default: return 'black';
     }
+  }
+
+  validarCarga(): void {
+
+    if (this.categoriasCargadas && this.skinsCargadas) {
+
+      this.loading = false;
+
+    }
+
+  }
+
+
+  //metodo de popup
+  toggleInfo(event: Event): void {
+
+    event.stopPropagation();
+
+    this.mostrarInfo = !this.mostrarInfo;
+
+  }
+
+  @HostListener('document:click')
+  clickFuera(): void {
+
+    this.mostrarInfo = false;
+
   }
 
   onImageError(event: any) {

@@ -1,11 +1,24 @@
-<div class="contenedor-ver-armas">
+<!-- loading -->
+<div *ngIf="loading" class="loading-screen">
+
+  <img src="cs2.png" class="loading-logo">
+
+  <div class="spinner"></div>
+
+  <p>Conectando al servidor de armas guardadas...</p>
+
+</div>
+
+
+
+<div class="contenedor-ver-armas" *ngIf="!loading">
   <div class="row">
 
     <div class="col-md-3 mb-3" *ngFor="let arma of armas">
 
       <div class="card h-100">
 
-        <img [src]="arma.imagenUrl" class="card-img-top" style="height: 150px; object-fit: cover;">
+        <img [src]="arma.imagenUrl" class="card-img-top arma-img">
 
         <div class="card-body">
 
