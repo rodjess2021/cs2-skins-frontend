@@ -17,10 +17,10 @@
 
     <!-- div de input de buscar skin -->
     <div class="form-group position-relative">
-      <label>Buscar Skin</label>
+      <label>Busca una skin</label>
 
       <input type="text" class="form-control" [value]="busquedaActual" (input)="filtrarSkins($event)"
-        placeholder="Escribe una skin..." autocomplete="off">
+        placeholder="Selecciona una skin..." autocomplete="off">
 
       <div class="lista-skins" *ngIf="busquedaActual.length > 0 && skinsFiltradas.length > 0">
         <div *ngFor="let item of skinsFiltradas" class="skin-item" (click)="seleccionarSkin(item)">
@@ -48,20 +48,23 @@
           </button>
 
           <div class="info-popup" *ngIf="mostrarInfo" (click)="$event.stopPropagation()">
-            <p><strong>¿Cómo obtener la URL?</strong></p>
+            <p><strong>¿Cómo obtener la URL correcta?</strong></p>
             <p>
-              1. Googlea la skin en cs.money o csgoskins.gg
+              1. Copia y googlea la skin del 1er campo
             </p>
             <p>
-              2. Haz click derecho sobre la imagen
+              2. Ingresa a los links de cs.money o csgoskins.gg
             </p>
             <p>
-              3. Copia la dirección de imagen
+              3. Haz click derecho sobre la imagen
+            </p>
+            <p>
+              4. Copia la dirección de imagen
             </p>
           </div>
         </div>
 
-      <input placeholder="Pega aqui la url..." type="text" formControlName="imagenUrl" class="form-control"
+      <input placeholder="Pega aquí la dirección de imagen..." type="text" formControlName="imagenUrl" class="form-control"
         [ngClass]="{'is-invalid': armaForm.get('imagenUrl')?.errors?.['required']}">
 
       <div *ngIf="armaForm.get('imagenUrl')?.touched">
@@ -84,8 +87,8 @@
 
     <!-- div de checkbox stattrak -->
     <div class="form-group">
-      <label>
-        StatTrak
+      <label class="cursiva">
+        StatTrak™
         <input type="checkbox" formControlName="statTrak">
       </label>
     </div>
@@ -93,7 +96,7 @@
 
      <!-- div de input nombre -->
     <div class="form-group">
-      <label>Nombre</label>
+      <label>Asignar nombre</label>
       <input placeholder="Ponle el nombre que gustes..." type="text" formControlName="nombre" class="form-control" [ngClass]="{
       'is-invalid': armaForm.get('nombre')?.touched && armaForm.get('nombre')?.invalid
       }">
