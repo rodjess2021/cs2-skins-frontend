@@ -5,29 +5,67 @@
 }
 
 .form-group {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
+}
+
+.form-control {
+    background-color: #1e1e1e;
+
+    border: 1px solid #4a4a4a;
+
+    color: white;
+
+    border-radius: 10px;
+
+    padding: 12px 14px;
+
+    transition: all 0.25s ease;
+
+    box-shadow: none;
+}
+
+.form-control::placeholder {
+
+    color: #9a9a9a;
+
+}
+
+.form-control:focus {
+
+    background-color: #242424;
+
+    border-color: #ffae00;
+
+    box-shadow: 0 0 12px rgba(255, 174, 0, 0.25);
+
+    color: white;
+    transform: translateY(-1px);
 }
 
 .lista-skins{
-  position: absolute;
-  width: 100%;
-  max-height: 250px;
-  overflow-y: auto;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  z-index: 1000;
-  margin-top: 2px;
+  background-color: #1e1e1e;
+
+    border: 1px solid #3f3f3f;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    margin-top: 5px;
 }
 
 .skin-item{
   padding: 10px;
   cursor: pointer;
-  color: black;
+  color: white;
+
+  transition: background 0.2s ease;
 }
 
 .skin-item:hover{
-  background-color: #f5f5f5;
+  background-color: #ffae00;
+
+    color: black;
 }
 
 .form-color{

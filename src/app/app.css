@@ -1,3 +1,10 @@
+.container {
+
+    flex: 1;
+
+}
+
+
 .footer-app {
 
     width: 100%;
@@ -45,6 +52,12 @@
     color: #ffb74d;
 
     text-shadow: 0 0 8px rgba(255,152,0,0.7);
+
+}
+
+.enlace {
+
+    text-decoration: none;
 
 }
 
