@@ -1,18 +1,27 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+<nav class="navbar-app">
 
-  <span class="navbar-brand">
-    CS2 Skins
-  </span>
+  <div class="logo-section">
 
-  <div class="navbar-nav">
+    <span>
+      <img src="cs2.png" class="logo-navbar">
+    </span>
 
-    <button class="btn btn-dark me-2"
-       routerLink="/">
+  </div>
+
+  <div class="navbar-links">
+
+    <button
+      class="nav-btn"
+      routerLink="/"
+      routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{exact:true}">
       Inicio
     </button>
 
-    <button class="btn btn-dark me-2"
-       routerLink="/armas">
+    <button
+      class="nav-btn"
+      routerLink="/armas"
+      routerLinkActive="active-link">
       Ver armas
     </button>
 
@@ -25,3 +34,15 @@
   <router-outlet></router-outlet>
   
 </div>
+
+
+<footer class="footer-app">
+
+  <p>
+    Developed by 
+    <span class="brand">
+      rodjess.pe
+    </span>
+  </p>
+
+</footer>
