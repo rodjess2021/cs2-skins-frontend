@@ -66,6 +66,11 @@
 
       <input placeholder="Pega aquí la dirección de imagen..." type="text" formControlName="imagenUrl" class="form-control"
         [ngClass]="{'is-invalid': armaForm.get('imagenUrl')?.errors?.['required']}">
+      
+      <small *ngIf="armaForm.get('imagenUrl')?.errors?.['pattern']"
+        class="text-danger">
+        Solo se permiten imágenes de CSMoney o CSGOSkins.gg
+      </small>
 
       <div *ngIf="armaForm.get('imagenUrl')?.touched">
         <small *ngIf="armaForm.get('imagenUrl')?.errors?.['required']" class="text-danger">

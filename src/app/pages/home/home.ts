@@ -52,7 +52,7 @@ export class Home implements OnInit {
     this.armaForm = this.fb.group({
       nombre: ['', Validators.required],
       statTrak: [false],
-      imagenUrl: ['', [Validators.required, Validators.pattern('https?://.+')]],
+      imagenUrl: ['', [Validators.required, Validators.pattern('^https?:\\/\\/.*(csmoney\\.com|csgoskins\\.gg).*')]],
       categoria: [null, Validators.required],
       skin: [null, Validators.required]
     })
