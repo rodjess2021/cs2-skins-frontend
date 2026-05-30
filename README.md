@@ -1,59 +1,143 @@
-# SkinsCs
+# 🎮 CS2 Skins Manager - Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.5.
+Aplicación web desarrollada con Angular para registrar y visualizar skins personalizadas de Counter-Strike 2.
 
-## Development server
+La aplicación permite crear armas, asociarlas a skins existentes, clasificarlas por rareza y visualizar la colección almacenada mediante una interfaz inspirada en la estética de CS2.
 
-To start a local development server, run:
+---
+
+## 🚀 Demo
+
+Frontend:
+[https://cs2-skins-blond.vercel.app](https://cs2-skins-blond.vercel.app)
+
+Backend:
+[https://cs2-skins-backend.onrender.com](https://cs2-skins-backend.onrender.com)
+
+> Nota: El backend está desplegado en Render (plan gratuito), por lo que la primera carga puede tardar máximo 1 minuto mientras el servidor se reactiva.
+
+---
+
+## 📸 Capturas
+### Inicio
+
+<img width="1919" height="1017" alt="image" src="https://github.com/user-attachments/assets/1f6bc2ae-19a1-4d6f-8ee4-67f2305b9406" />
+<img width="739" height="1600" alt="6c6569dc-45bf-45b1-915f-87734d044fd9" src="https://github.com/user-attachments/assets/d48779f3-a8c8-40a2-8260-8b41eb37f33c" />
+
+
+### Colección de armas
+
+<img width="1916" height="1018" alt="image" src="https://github.com/user-attachments/assets/2b0a1c5c-0946-47f1-aee8-b1e59e82e06b" />
+<img width="739" height="1600" alt="c07175c3-7f34-4b5f-81d4-cc5a0e925b7c" src="https://github.com/user-attachments/assets/1ac748f0-159b-4f09-b393-d3fcc2ea6b9a" />
+
+---
+
+## ✨ Funcionalidades
+
+- Registro de armas personalizadas.
+- Búsqueda de skins mediante autocompletado.
+- Asociación de skins registradas en base de datos.
+- Clasificación visual por rareza.
+- Soporte para armas StatTrak™.
+- Vista previa de imágenes.
+- Loader de carga mientras se obtienen datos del backend.
+- Diseño responsive.
+- Navegación SPA mediante Angular Router.
+- Validación de formularios.
+- Alertas visuales con SweetAlert2.
+
+---
+
+## 🛠 Tecnologías utilizadas
+
+### Frontend
+
+- Angular 21
+- TypeScript
+- HTML5
+- CSS3
+- Bootstrap 5
+- SweetAlert2
+- RxJS
+
+### Deploy
+
+- Vercel
+
+---
+
+## 🧩 Arquitectura
+
+El frontend consume una API REST desarrollada en Spring Boot.
+
+Principales módulos:
+
+- Gestión de armas
+- Gestión de skins
+- Gestión de categorías
+- Formularios reactivos
+- Navegación mediante Router
+
+---
+
+## ⚙️ Instalación local
+
+Clonar repositorio:
+
+```bash
+git clone https://github.com/TU-USUARIO/cs2-skins-frontend.git
+```
+
+Ingresar al proyecto:
+
+```bash
+cd cs2-skins-frontend
+```
+
+Instalar dependencias:
+
+```bash
+npm install
+```
+
+Ejecutar aplicación:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Abrir:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```text
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## 🔗 Backend
 
-## Building
+El backend del proyecto se encuentra en:
 
-To build the project run:
+[https://github.com/TU-USUARIO/cs2-skins-backend](https://github.com/rodjess2021/cs2-skins-backend.git)
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 🚧 Mejoras futuras
 
-## Running unit tests
+- Eliminación de armas.
+- Edición de armas registradas.
+- Autenticación de usuarios.
+- Validación avanzada de URLs.
+- Filtros por rareza.
+- Ordenamiento de colección.
+- Integración con APIs externas de CS2.
+- Dashboard de estadísticas.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+---
 
-```bash
-ng test
-```
+## 👨‍💻 Autor
 
-## Running end-to-end tests
+Desarrollado por **Rodrigo Jesús**
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Instagram:
+https://www.instagram.com/rodjess.pe
