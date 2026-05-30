@@ -85,7 +85,7 @@ Principales módulos:
 Clonar repositorio:
 
 ```bash
-git clone https://github.com/TU-USUARIO/cs2-skins-frontend.git
+git clone https://github.com/rodjess2021/cs2-skins-frontend.git
 ```
 
 Ingresar al proyecto:
