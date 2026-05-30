@@ -118,7 +118,7 @@ http://localhost:4200
 
 El backend del proyecto se encuentra en:
 
-[https://github.com/TU-USUARIO/cs2-skins-backend](https://github.com/rodjess2021/cs2-skins-backend.git)
+[https://github.com/rodjess2021/cs2-skins-backend](https://github.com/rodjess2021/cs2-skins-backend.git)
 
 ---
 
